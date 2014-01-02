@@ -1,0 +1,26 @@
+//Compile with: protoc RemoteProtocol.proto --java_out ../java
+
+option java_package = "org.hyflow.core.platform";
+option optimize_for = SPEED;
+
+message Address {
+	required string addr = 1
+	required int32 port = 2
+}
+
+message DirectoryRequest {
+	required string id = 1
+	optional int32 ver = 2
+}
+
+message DirectoryRedirect {
+	required string id = 1
+	required Address newLocation = 2
+}
+
+message DirectoryResponse {
+	required string id = 1
+	required int32 ver = 2
+	optional bytes data = 3
+}
+
